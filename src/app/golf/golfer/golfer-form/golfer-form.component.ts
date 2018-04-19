@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Golfer } from '../models/golfer';
-import { GolfDataService } from '../shared/services/golf-data.service';
+import { Golfer } from '../../models/golfer';
+import { GolfDataService } from '../../shared/services/golf-data.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-golfer-form',
@@ -9,20 +10,19 @@ import { GolfDataService } from '../shared/services/golf-data.service';
 })
 export class GolferFormComponent implements OnInit {
 
-  constructor( private golfDataService: GolfDataService) { }
+  constructor( private golfDataService: GolfDataService,  private router: Router) { }
 
-  model = new Golfer('13', '', '', null);
+  model = new Golfer('', '', null);
 
   submitted = false;
 
   onSubmit() {
     const data: any = {};
     data.item = this.model;
-    console.log(data);
     this.golfDataService.putPlayer(data).then(res => { // Success
-      console.log('golfer put success');
+      this.submitted = true;
+      this.router.navigate(['/golfers']);
     });
-    this.submitted = true;
   }
 
   // TODO: Remove this when we're done

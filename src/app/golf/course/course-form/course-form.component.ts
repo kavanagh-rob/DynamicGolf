@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Hole} from '../models/hole';
-import {Course} from '../models/course';
+import {Hole} from '../../models/hole';
+import {Course} from '../../models/course';
+import { GolfDataService } from '../../shared/services/golf-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-course-form',
@@ -40,7 +42,7 @@ export class CourseFormComponent implements OnInit {
   indexFormValid = true;
   parFormValid = true;
 
-  constructor() {
+  constructor( private golfDataService: GolfDataService, private router: Router) {
     this.holes[0] = this.hole1;
     this.holes[1] = this.hole2;
     this.holes[2] = this.hole3;
@@ -69,7 +71,12 @@ export class CourseFormComponent implements OnInit {
 
   onSubmit() {
     this.validateForms();
-    this.submitted = true;
+    const data: any = {};
+    data.item = this.model;
+    this.golfDataService.putCourse(data).then(res => { // Success
+      console.log('Course put success');
+      this.router.navigate(['/course']);
+    });
   }
 
   validateForms() {

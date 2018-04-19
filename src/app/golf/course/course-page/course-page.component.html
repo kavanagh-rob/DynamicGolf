@@ -1,0 +1,19 @@
+<h3>Available Courses</h3>
+
+<table class="table hoverTable">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let course of courses; let i = index;" (click)="selectCourse($event, course)" [class.highlighted]="selectedCourse && course.name === selectedCourse.name">
+    <td>{{i+1}}</td>
+    <td>{{course.name}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<a class="btn btn-primary" routerLink="/addCourse">Add Course</a>
+

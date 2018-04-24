@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LeaderboardComponent } from './leaderboard.component';
+import { RoundOverviewComponent } from './round-overview.component';
 
-describe('LeaderboardComponent', () => {
-  let component: LeaderboardComponent;
-  let fixture: ComponentFixture<LeaderboardComponent>;
+describe('RoundOverviewComponent', () => {
+  let component: RoundOverviewComponent;
+  let fixture: ComponentFixture<RoundOverviewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LeaderboardComponent ]
+      declarations: [ RoundOverviewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LeaderboardComponent);
+    fixture = TestBed.createComponent(RoundOverviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
